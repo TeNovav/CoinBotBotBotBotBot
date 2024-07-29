@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Здесь можно добавить код для открытия страницы перевода
     });
 
-
-
     mineBtn.addEventListener('click', () => {
         fetch('http://127.0.0.1:8000/mine_block')
             .then(response => response.text())
@@ -30,6 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 userBalance.textContent = (balance + 0.01) + 'BTC'
             })
     })
-
-
 });
