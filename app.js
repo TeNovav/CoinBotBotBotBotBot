@@ -1,30 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const userBalance = document.getElementById('user-balance');
-    const transferBtn = document.getElementById('transfer-btn');
     const mineBtn = document.getElementById('mine-btn');
 
+    // Функция для получения идентификатора пользователя (например, из localStorage)
+    const getUserId = () => {
+        return localStorage.getItem('user_id') || 'default_user_id';
+    };
 
     // Пример установки начального баланса
     userBalance.textContent = '0.05 BTC';
 
-
-    // Обработчик кнопки "Перевести"
-    transferBtn.addEventListener('click', () => {
-        alert('Переход к переводу');
-        // Здесь можно добавить код для открытия страницы перевода
-    });
-
-
-
+    // Обработчик кнопки "Майнить"
     mineBtn.addEventListener('click', () => {
-        fetch('http://127.0.0.1:8000/mine?user_id=${userId}')
+        const userId = getUserId();
+        fetch(http://127.0.0.1:8000/mine?user_id=${userId})
             .then(response => response.text())
-            .then(data) => {
-                alert(data);
-
-            }
+            .then(data => {
+                alert(data);  // Показываем ответ от сервера пользователю
+                // Обновляем баланс пользователя в интерфейсе
+                fetch(http://127.0.0.1:8000/get_balance?user_id=${userId})
+                    .then(response => response.text())
+                    .then(balanceData => {
+                        userBalance.textContent = balanceData.split(' ')[2] + ' BTC';
+                    });
             })
-    })
-
-
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
 });
