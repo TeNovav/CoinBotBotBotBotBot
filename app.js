@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     mineBtn.addEventListener('click', () => {
-        fetch('http://127.0.0.1:8000/mine_block')
+        fetch('http://127.0.0.1:8000/mine?user_id=${userId}')
             .then(response => response.text())
-            .then(data => {
-                const balance = parseFloat(userBalance.textContent)
-                userBalance.textContent = (balance + 0.01) + 'BTC'
+            .then(data) => {
+                alert(data);
+
+            }
             })
     })
 
