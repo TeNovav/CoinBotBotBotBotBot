@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const userBalance = document.getElementById('user-balance');
     const mineBtn = document.getElementById('mine-btn');
+    const transferBtn = document.getElementById('transfer-btn');
 
     // Функция для получения идентификатора пользователя (например, из localStorage)
     const getUserId = () => {
+
         return localStorage.getItem('user_id') || 'default_user_id';
     };
 
+    transferBtn.addEventListener('click', () => {
+        alert('Переход к переводу');
+    });
 
     // Обработчик кнопки "Майнить"
     mineBtn.addEventListener('click', () => {
